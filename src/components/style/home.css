@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap');
+
+
+.container{
+    display: flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    background-color: #CE2829;
+    background-image: url("../../img/mvp-banner.png");
+    width: 100%;
+    height: 50rem;
+    text-align: center;
+}
+
+.text-content {
+    display: flex;
+    justify-content: center;
+}
+.button {
+    display: flex;
+    justify-content: center;
+
+}
+
+#order-pizza {
+    padding: 1rem 3rem 1rem 3rem;
+    background-color: #FDC913;
+    border-radius: 2rem;
+    font-weight: bold;
+    border: none;
+    
+}
+
+
+.container p {
+    text-align: center;
+    font-size:  3rem;
+    color: aliceblue;
+    font-family: 'Barlow', sans-serif;
+    
+}
