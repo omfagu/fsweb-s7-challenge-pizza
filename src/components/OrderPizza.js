@@ -15,6 +15,7 @@ const OrderPizza = () => {
   const [fiyat, setFiyat] = useState(0);
   const [genelToplam, setGenelToplam] = useState(0);
   const [ekmalzemeFiyati, setEkmalzemeFiyati] = useState(0);
+  const [pizzaAdet, setPizzaAdet] = useState(1);
   const [obje, setObje] = useState({});
   const [selectedItems, setSelectedItems] = useState([]);
 
@@ -72,8 +73,10 @@ const OrderPizza = () => {
   };
 
   useEffect(() => {
-    setGenelToplam(fiyat + ekmalzemeFiyati);
-  }, [fiyat, selectedItems]);
+    const yeniFiyat = fiyat + ekmalzemeFiyati;
+    const yeniToplam = yeniFiyat * pizzaAdet;
+    setGenelToplam(yeniToplam);
+  }, [fiyat, selectedItems, pizzaAdet, ekmalzemeFiyati]);
 
   const schema = Yup.object().shape({
     hamur: Yup.string().required("Hamur Kalınlığı seçimi zorunludur."),
@@ -109,9 +112,16 @@ const OrderPizza = () => {
       });
   };
 
-  const adetFormSubmit = (e) => {
-    e.preventDefault();
-    console.log("sssssssssssssss");
+  const artir = (e) => {
+    if (fiyat !== 0) {
+      setPizzaAdet(pizzaAdet + 1);
+    }
+  };
+
+  const eksilt = (e) => {
+    if (pizzaAdet !== 1) {
+      setPizzaAdet(pizzaAdet - 1);
+    }
   };
 
   return (
@@ -147,93 +157,109 @@ const OrderPizza = () => {
                 lectus vestibulum mattis ullamcorper velit sed ullamcorper.
               </p>
             </div>
-          </div>
-          <form id="pizza-form" onSubmit={formSubmit}>
-            <div className="radio-form">
-              <div className="boyut">
-                {radioValues.map((value) => (
-                  <label>
-                    <input
-                      type="radio"
-                      name="boyut"
-                      value={value}
-                      onChange={boyutHandle}
-                    />
-                    {value}
-                  </label>
-                ))}
-              </div>
+            <form id="pizza-form" onSubmit={formSubmit}>
+              <div className="radio-form">
+                <div className="boyut">
+                  <h4>
+                    Boyut Seç <span style={{ color: "red" }}>*</span>
+                  </h4>
+                  {radioValues.map((value) => (
+                    <label>
+                      <input
+                        type="radio"
+                        name="boyut"
+                        value={value}
+                        onChange={boyutHandle}
+                      />
+                      {value}
+                    </label>
+                  ))}
+                </div>
 
-              <div className="hamur">
-                <h4>Hamur Seç *</h4>
-                <select
-                  value={hamur}
-                  onChange={(e) => setHamur(e.target.value)}
-                >
-                  <option value="">Hamur Kalınlığı</option>
-                  <option value="normal">Normal Hamur</option>
-                  <option value="ince">İnce Hamur</option>
-                  <option value="kalin">Kalın Hamur</option>
-                </select>
-              </div>
-            </div>
-            <div className="head-2">
-              <h4>Ek Malzemeler</h4>
-              <p>En Fazla 10 malzeme seçebilirsiniz. 5 TL</p>
-            </div>
-
-            <div className="ek-malzemeler">
-              <div className="checkbox-1">
-                {checkboxValues.map((value) => (
-                  <label>
-                    <input
-                      type="checkbox"
-                      value={value}
-                      onChange={checkboxChange}
-                    />
-                    {value}
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            <div className="siparis-notu">
-              <h4>Sipariş Notu</h4>
-              <Input
-                style={{ width: "33rem" }}
-                type="textarea"
-                onChange={inputChange}
-              ></Input>
-            </div>
-            <hr></hr>
-            <div className="bottom">
-              <div className="siparis-detayi">
-                <div className="submit-button">
-                  <Button
-                    style={{ paddingLeft: "4rem", paddingRight: "4rem" }}
-                    color="warning"
-                    type="submit"
+                <div className="hamur">
+                  <h4>
+                    Hamur Seç <span style={{ color: "red" }}>*</span>
+                  </h4>
+                  <select
+                    value={hamur}
+                    onChange={(e) => setHamur(e.target.value)}
                   >
-                    Siparişi Ver
-                  </Button>
-                  <br></br>
+                    <option disabled selected hidden value="">
+                      Hamur Kalınlığı
+                    </option>
+                    <option value="normal">Normal Hamur</option>
+                    <option value="ince">İnce Hamur</option>
+                    <option value="kalin">Kalın Hamur</option>
+                  </select>
                 </div>
               </div>
-            </div>
-          </form>
-          <div className="pizza-adet">
-            <form onSubmit={adetFormSubmit}>
-              <Button color="warning" type="submit">
-                +
-              </Button>
-              <div className="adet-sayisi">
-                <p>1</p>
+              <div className="head-2">
+                <h4>Ek Malzemeler</h4>
+                <p>En Fazla 10 malzeme seçebilirsiniz. 5 TL</p>
               </div>
-              <Button color="warning" type="submit">
-                -
-              </Button>
+
+              <div className="ek-malzemeler">
+                <div className="checkbox-1">
+                  {checkboxValues.map((value) => (
+                    <label>
+                      <input
+                        type="checkbox"
+                        value={value}
+                        onChange={checkboxChange}
+                      />
+                      {value}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div className="siparis-notu">
+                <h4>Sipariş Notu</h4>
+                <Input
+                  placeholder="Siparişine eklemek istediğin bir not var mı?"
+                  type="textarea"
+                  onChange={inputChange}
+                ></Input>
+              </div>
+              <hr></hr>
+              <div className="bottom">
+                <div className="pizza-adet">
+                  <div className="arti" onClick={() => artir()}>
+                    <p>+</p>
+                  </div>
+                  <div className="adet-sayisi">
+                    <p>{pizzaAdet}</p>
+                  </div>
+                  <div className="eksi" onClick={() => eksilt()}>
+                    <p>-</p>
+                  </div>
+                </div>
+                <div class="siparis-detayi">
+                  <div className="siparis-toplami">Sipariş Toplamı</div>
+
+                  <div className="ekstra-malzeme">
+                    <span style={{ paddingLeft: "2rem" }}>Seçimler</span>
+                    <span style={{ paddingLeft: "8rem" }}>{fiyat} ₺</span>
+                  </div>
+                  <br></br>
+                  <div className="ekstra-malzeme" style={{ color: "red" }}>
+                    <span style={{ paddingLeft: "2rem" }}>Toplam</span>
+                    <span style={{ paddingLeft: "8.7rem" }}>
+                      {genelToplam} ₺
+                    </span>
+                  </div>
+
+                  <div className="submit-button">
+                    <button id="order-button" type="submit">
+                      SİPARİŞ VER
+                    </button>
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
+
+          <div className="pizza-adet"></div>
         </div>
       </div>
     </div>

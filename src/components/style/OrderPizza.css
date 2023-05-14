@@ -18,10 +18,9 @@
 .radio-form {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  padding-top: 2rem;
   padding-bottom: 2rem;
-  padding-right: 2rem;
-  padding-left: 2rem;
 }
 .checkbox-1 {
   display: grid;
@@ -36,12 +35,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .boyut {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-right: 5rem;
 }
 .hamur {
   margin-left: 8rem;
@@ -52,12 +53,7 @@
   flex-direction: column;
   padding-bottom: 2rem;
 }
-.head {
-  width: 27rem;
-}
-.head-2 {
-  padding-left: 2rem;
-}
+
 .nav-bar {
   background-color: #ce2829;
   padding: 0.1rem;
@@ -79,39 +75,93 @@
   color: white;
   text-decoration: none;
 }
-.siparis-notu {
-  margin-left: 2rem;
-  width: 23rem;
-}
-.submit-button {
-  padding: 0rem;
+
+#order-button {
+  width: 100%;
+  background-color: #fdc913;
+  border: none;
+  outline: none;
+  padding: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 2rem;
 }
 hr {
   border: none;
   border-top: 2px solid black;
-  width: 33rem;
-  margin: 2rem;
-  margin-top: 3rem;
 }
 .bottom {
   display: flex;
   flex-direction: row;
-  padding-left: 2rem;
 }
 .pizza-adet {
   display: flex;
   flex-direction: row;
-  padding-right: 4rem;
+  height: 3rem;
+  width: 10rem;
 }
 .adet-sayisi {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2rem;
+  width: 3rem;
   border: 1px solid gainsboro;
   border-radius: 5px;
 }
 .adet-sayisi p {
+  display: flex;
+  flex-direction: row;
   text-align: center;
   margin-bottom: 0;
+}
+.siparis-detayi {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid gainsboro;
+  font-weight: bold;
+  font-family: "Barlow", sans-serif;
+  width: 22rem;
+  margin-left: 4rem;
+  border-radius: 8px;
+}
+
+.arti {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  background-color: #ffc107;
+}
+.arti p {
+  text-align: center;
+  margin-bottom: 0;
+  cursor: pointer;
+  outline: none;
+}
+.arti:hover {
+  background-color: #ffe186;
+}
+.eksi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  background-color: #ffc107;
+}
+.eksi p {
+  text-align: center;
+  margin-bottom: 0;
+  cursor: pointer;
+  outline: none;
+}
+.eksi:hover {
+  background-color: #ffe186;
+}
+.siparis-toplami {
+  margin: 2rem;
 }
