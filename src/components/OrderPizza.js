@@ -239,7 +239,9 @@ const OrderPizza = () => {
 
                   <div className="ekstra-malzeme">
                     <span style={{ paddingLeft: "2rem" }}>Seçimler</span>
-                    <span style={{ paddingLeft: "8rem" }}>{fiyat} ₺</span>
+                    <span style={{ paddingLeft: "8rem" }}>
+                      {ekmalzemeFiyati} ₺
+                    </span>
                   </div>
                   <br></br>
                   <div className="ekstra-malzeme" style={{ color: "red" }}>
@@ -250,9 +252,9 @@ const OrderPizza = () => {
                   </div>
 
                   <div className="submit-button">
-                    <button id="order-button" type="submit">
+                    <Button id="order-button" type="submit">
                       SİPARİŞ VER
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
