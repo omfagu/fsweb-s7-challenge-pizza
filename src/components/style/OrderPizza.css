@@ -1,127 +1,117 @@
-.container-2 {
-    
-
-
-}
 .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .content-1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40rem;
-    padding: 2rem;
-    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40rem;
+  padding: 2rem;
 }
-.boyut1 input {
-    margin: 0.6rem;
+.boyut input {
+  margin: 0.6rem;
 }
-.content-2 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 2rem;
-
-
+.radio-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 .checkbox-1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-right: 2rem;
-
+  display: grid;
+  grid-template-columns: repeat(3, 10rem);
+  grid-gap: 10px;
 }
-.checkbox-1 input{
-
-    margin: 0.6rem;
-}
-.checkbox-2 input{
-
-    margin: 0.6rem;
-}
-.checkbox-3 input{
-
-    margin: 0.6rem;
-}
-.checkbox-2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-right: 2rem;
-
-}
-.checkbox-3 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-right: 2rem;
-
+.checkbox-1 input {
+  margin: 0.3rem;
 }
 
 .ek-malzemeler {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem;
 }
-.boyut1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+.boyut {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .hamur {
-    margin-left: 8rem;
-
+  margin-left: 8rem;
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 2rem;
-
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
 }
 .head {
-    width: 27rem;
-
+  width: 27rem;
 }
 .head-2 {
-    padding-left: 2rem;
+  padding-left: 2rem;
 }
 .nav-bar {
-    background-color: #CE2829;
-    padding: 0.1rem;
-    
+  background-color: #ce2829;
+  padding: 0.1rem;
 }
 .nav-bar ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding-left: 0px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding-left: 0px;
 }
 .nav-bar li {
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-    color: aliceblue;
-
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  color: aliceblue;
 }
 
 .nav-bar ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  .siparis-notu {
-    margin-left: 2rem;
-    width: 23rem;
-  }
-  .submit-button {
-
-    padding: 2rem;
-  }
+  color: white;
+  text-decoration: none;
+}
+.siparis-notu {
+  margin-left: 2rem;
+  width: 23rem;
+}
+.submit-button {
+  padding: 0rem;
+}
+hr {
+  border: none;
+  border-top: 2px solid black;
+  width: 33rem;
+  margin: 2rem;
+  margin-top: 3rem;
+}
+.bottom {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2rem;
+}
+.pizza-adet {
+  display: flex;
+  flex-direction: row;
+  padding-right: 4rem;
+}
+.adet-sayisi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+.adet-sayisi p {
+  text-align: center;
+  margin-bottom: 0;
+}

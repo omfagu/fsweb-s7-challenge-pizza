@@ -1,10 +1,17 @@
 .success {
-    background-color: #CE2829;
-    width: 100%;
-    height: 50rem;
-    text-align: center;
-    color: aliceblue;
+  background-color: #ce2829;
+  background-image: url("../../img/mvp-banner.png");
+  width: 100%;
+  height: 50rem;
+  color: aliceblue;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .success p {
-font-size: 3rem;
+  font-size: 3rem;
 }
