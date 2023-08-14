@@ -18,7 +18,6 @@ const OrderPizza = () => {
   const [pizzaAdet, setPizzaAdet] = useState(1);
   const [obje, setObje] = useState({});
   const [selectedItems, setSelectedItems] = useState([]);
-
   const history = useHistory();
 
   const checkboxValues = [
@@ -52,15 +51,6 @@ const OrderPizza = () => {
     }
   };
 
-  const inputChange = (e) => {
-    setNot(e.target.value);
-  };
-
-  useEffect(() => {
-    const pizza = { fiyat, hamur, size, selectedItems, not };
-    setObje(pizza);
-  }, [fiyat, hamur, size, selectedItems, not]);
-
   const checkboxChange = (e) => {
     const value = e.target.value;
     if (e.target.checked) {
@@ -71,6 +61,33 @@ const OrderPizza = () => {
       setSelectedItems(selectedItems.filter((selected) => selected !== value));
     }
   };
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    schema
+      .validate(data)
+      .then(() => {
+        axios
+          .post("https://reqres.in/api/orders", obje)
+          .then((res) => {
+            console.log(res.data);
+            history.push("/Success");
+          })
+          .catch(() => {});
+      })
+      .catch((errors) => {
+        console.error(errors);
+      });
+  };
+
+  const inputChange = (e) => {
+    setNot(e.target.value);
+  };
+
+  useEffect(() => {
+    const pizza = { fiyat, hamur, size, selectedItems, not };
+    setObje(pizza);
+  }, [fiyat, hamur, size, selectedItems, not]);
 
   useEffect(() => {
     const yeniFiyat = fiyat + ekmalzemeFiyati;
@@ -91,25 +108,6 @@ const OrderPizza = () => {
     hamur,
     size,
     selectedItems,
-  };
-
-  const formSubmit = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    schema
-      .validate(data)
-      .then(() => {
-        axios
-          .post("https://reqres.in/api/orders", obje)
-          .then((res) => {
-            console.log(res.data);
-            history.push("/Success");
-          })
-          .catch(() => {});
-      })
-      .catch((errors) => {
-        console.error(errors);
-      });
   };
 
   const artir = (e) => {
@@ -164,7 +162,7 @@ const OrderPizza = () => {
                     Boyut Seç <span style={{ color: "red" }}>*</span>
                   </h4>
                   {radioValues.map((value) => (
-                    <label>
+                    <label key={value}>
                       <input
                         type="radio"
                         name="boyut"
@@ -184,7 +182,7 @@ const OrderPizza = () => {
                     value={hamur}
                     onChange={(e) => setHamur(e.target.value)}
                   >
-                    <option disabled selected hidden value="">
+                    <option disabled hidden value="">
                       Hamur Kalınlığı
                     </option>
                     <option value="normal">Normal Hamur</option>
@@ -201,7 +199,7 @@ const OrderPizza = () => {
               <div className="ek-malzemeler">
                 <div className="checkbox-1">
                   {checkboxValues.map((value) => (
-                    <label>
+                    <label key={value}>
                       <input
                         type="checkbox"
                         value={value}
@@ -224,17 +222,17 @@ const OrderPizza = () => {
               <hr></hr>
               <div className="bottom">
                 <div className="pizza-adet">
-                  <div className="arti" onClick={() => artir()}>
-                    <p>+</p>
+                  <div className="eksi" onClick={() => eksilt()}>
+                    <p>-</p>
                   </div>
                   <div className="adet-sayisi">
                     <p>{pizzaAdet}</p>
                   </div>
-                  <div className="eksi" onClick={() => eksilt()}>
-                    <p>-</p>
+                  <div className="arti" onClick={() => artir()}>
+                    <p>+</p>
                   </div>
                 </div>
-                <div class="siparis-detayi">
+                <div className="siparis-detayi">
                   <div className="siparis-toplami">Sipariş Toplamı</div>
 
                   <div className="ekstra-malzeme">
